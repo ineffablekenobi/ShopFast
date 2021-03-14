@@ -1,5 +1,7 @@
 package com.ineffable.shopfast.Entities;
 
+import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class Products {
     @Id
     @GeneratedValue
     @Column(name = "product_id")
-    private Long id;
+    protected Long id;
     private String Distributor;
     private double price;
 
@@ -18,6 +20,7 @@ public class Products {
     @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id_fk", referencedColumnName = "product_id")
     List<User> users;
+
 
     public Products(Long id, String distributor, double price) {
         this.id = id;

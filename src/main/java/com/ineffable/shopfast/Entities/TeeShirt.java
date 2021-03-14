@@ -1,12 +1,6 @@
 package com.ineffable.shopfast.Entities;
 
-import com.ineffable.shopfast.Entities.Properties.Color;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,11 +8,11 @@ public class TeeShirt extends Clothing {
     private String sleeve;
     private String neck;
 
-/*
     @OneToMany(targetEntity =Color.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "TeeShirt_fk",referencedColumnName = "id")
+    @JoinColumn(name = "TeeShirt_fk",referencedColumnName = "product_id")
     List<Color> colors;
-*/
+
+
 
     public TeeShirt(Long id, String distributor, double price, double cotton, double polyester, double CBC, String fabricType, Boolean slimfit, String sleeve, String neck) {
         super(id, distributor, price, cotton, polyester, CBC, fabricType, slimfit);

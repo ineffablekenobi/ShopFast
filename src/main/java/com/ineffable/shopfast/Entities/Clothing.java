@@ -1,7 +1,6 @@
 package com.ineffable.shopfast.Entities;
 
-import javax.persistence.Entity;
-import java.util.ArrayList;
+import javax.persistence.*;
 
 @Entity
 public class Clothing extends Products{
@@ -10,11 +9,14 @@ public class Clothing extends Products{
     private double polyester;
     private double CBC;
 
+
+
     //Fabric
     String fabricType;
 
     //Properties
     Boolean slimfit;
+
 
     public Clothing(Long id, String distributor, double price, double cotton, double polyester, double CBC, String fabricType, Boolean slimfit) {
         super(id, distributor, price);

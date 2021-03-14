@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Entities.Properties;
+package com.ineffable.shopfast.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Color {
     @Id
     @GeneratedValue
-    private Long colorID;
+    private Long id;
     private String hex;
     private String name;
     private String rgba;
@@ -21,6 +21,14 @@ public class Color {
     }
 
     public Color() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
