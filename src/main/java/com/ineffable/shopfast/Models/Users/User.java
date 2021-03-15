@@ -1,19 +1,15 @@
-package com.ineffable.shopfast.Entities;
-
-import com.sun.istack.Nullable;
+package com.ineffable.shopfast.Models.Users;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
-    private String username;
-    private String password;
-    private String email;
+    protected Long id;
+    protected String username;
+    protected String password;
+    protected String email;
 
 
 
@@ -60,6 +56,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
 
 

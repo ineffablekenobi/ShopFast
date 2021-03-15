@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Entities.Sizes;
+package com.ineffable.shopfast.Models.Sizes;
 
 public class BottomWearSize extends Size {
     private double waist;

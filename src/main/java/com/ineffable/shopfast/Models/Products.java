@@ -1,6 +1,6 @@
-package com.ineffable.shopfast.Entities;
+package com.ineffable.shopfast.Models;
 
-import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader;
+import com.ineffable.shopfast.Models.Users.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;

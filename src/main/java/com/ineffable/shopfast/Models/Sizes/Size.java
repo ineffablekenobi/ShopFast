@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Entities.Sizes;
+package com.ineffable.shopfast.Models.Sizes;
 
 public class Size {
     private double length;

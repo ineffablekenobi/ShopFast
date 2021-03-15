@@ -1,4 +1,6 @@
-package com.ineffable.shopfast.Entities;
+package com.ineffable.shopfast.Models.Users;
+
+import com.ineffable.shopfast.Models.Products;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,25 +12,19 @@ import java.util.List;
 public class Customer extends User{
 
 
-    String address;
-    String phoneNumber;
+    protected String address;
+    protected String phoneNumber;
 
     @OneToMany(targetEntity = Products.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="User_fk", referencedColumnName = "id")
+    @JoinColumn(name="Customer_fk", referencedColumnName = "id")
     List<Products> products;
 
-    public Customer(Long id, String username, String password, String email, String address, String phoneNumber, List<Products> products) {
+    public Customer(Long id, String username, String password, String email, String address, String phoneNumber) {
         super(id, username, password, email);
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.products = products;
     }
 
-    public Customer(String address, String phoneNumber, List<Products> products) {
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.products = products;
-    }
 
     public Customer(Long id, String username, String password, String email) {
         super(id, username, password, email);
@@ -53,11 +49,4 @@ public class Customer extends User{
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Products> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Products> products) {
-        this.products = products;
-    }
 }
