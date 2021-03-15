@@ -1,5 +1,7 @@
 package com.ineffable.shopfast.Entities;
 
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +26,9 @@ public class User {
         this.password = password;
         this.email = email;
         this.role = role;
-        this.products = new ArrayList<>();
     }
 
-    public User(Long id, String username, String password, String email, String role, ArrayList<Products> products) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.products = products;
-    }
+
 
     public User() {
     }
@@ -79,11 +73,5 @@ public class User {
         this.role = role;
     }
 
-    public List<Products> getProducts() {
-        return products;
-    }
 
-    public void setProducts(ArrayList<Products> products) {
-        this.products = products;
-    }
 }
