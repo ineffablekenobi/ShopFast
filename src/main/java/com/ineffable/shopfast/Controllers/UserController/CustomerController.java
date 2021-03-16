@@ -39,7 +39,6 @@ public class CustomerController {
     }
 
 
-
     @PutMapping("/Customer/status/{id}")
     public void setStatus(@PathVariable("id") Long id){
         customerService.setStatus(id);
