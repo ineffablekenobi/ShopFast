@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Models;
+package com.ineffable.shopfast.Models.Properties;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

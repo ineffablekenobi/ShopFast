@@ -1,9 +1,8 @@
 package com.ineffable.shopfast.Models;
 
-import com.ineffable.shopfast.Models.Users.User;
+import com.ineffable.shopfast.Models.Properties.Color;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 // used as parent of our products
@@ -16,7 +15,7 @@ public class Products {
     private String Distributor;
     private double price;
 
-    @OneToMany(targetEntity =Color.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Color.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Customer_fk",referencedColumnName = "product_id")
     List<Color> colors;
 
