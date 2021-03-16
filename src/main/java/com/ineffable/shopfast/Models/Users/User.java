@@ -3,7 +3,7 @@ package com.ineffable.shopfast.Models.Users;
 import javax.persistence.*;
 
 @Entity
-public class User {
+public abstract class User {
     @Id
     @GeneratedValue
     protected Long id;

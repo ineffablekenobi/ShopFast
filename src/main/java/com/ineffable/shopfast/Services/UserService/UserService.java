@@ -4,6 +4,7 @@ import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.User;
 import com.ineffable.shopfast.Repository.UserRepo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.codec.CodecCustomizer;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,7 +20,16 @@ public class UserService {
         if(customer.isPresent()){
             return customer.get();
         }else{
-            return new Customer("Unknown user");
+            return new Customer("Unknown User");
+        }
+    }
+
+    public User gerUserByEmail(String email){
+        Optional<Customer> customer = customerRepo.findByEmail(email);
+        if(customer.isPresent()){
+            return customer.get();
+        }else{
+            return new Customer("Unknown User");
         }
     }
 
