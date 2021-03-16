@@ -1,16 +1,28 @@
 package com.ineffable.shopfast.Models.Users;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Stuff extends User {
 
-    String Role;
+    private String phoneNumber;
+    private String role;
 
-    public Stuff(Long id, String username, String password, String email, String role) {
+    public Stuff(Long id, String username, String password, String email, String phoneNumber, String role) {
         super(id, username, password, email);
-        Role = role;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
-    public Stuff(String role) {
-        Role = role;
+    public Stuff(String phoneNumber, String role) {
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+    }
+
+    public Stuff(String username, String phoneNumber, String role) {
+        super(username);
+        this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
     public Stuff(Long id, String username, String password, String email) {
@@ -21,11 +33,11 @@ public class Stuff extends User {
     }
 
     public String getRole() {
-        return Role;
+        return this.role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
 }
