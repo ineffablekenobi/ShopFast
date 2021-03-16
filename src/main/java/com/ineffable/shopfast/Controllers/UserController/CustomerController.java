@@ -1,8 +1,8 @@
-package com.ineffable.shopfast.Controllers;
+package com.ineffable.shopfast.Controllers.UserController;
 
 import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.User;
-import com.ineffable.shopfast.Services.CustomerService;
+import com.ineffable.shopfast.Services.UserService.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +37,8 @@ public class CustomerController {
     public boolean getStatus(@PathVariable("id") Long id){
         return customerService.getStatus(id);
     }
+
+
 
     @PutMapping("/Customer/status/{id}")
     public void setStatus(@PathVariable("id") Long id){

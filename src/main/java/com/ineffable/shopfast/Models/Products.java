@@ -16,11 +16,9 @@ public class Products {
     private String Distributor;
     private double price;
 
-    // list of customers
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id_fk", referencedColumnName = "product_id")
-    List<User> users;
-
+    @OneToMany(targetEntity =Color.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Customer_fk",referencedColumnName = "product_id")
+    List<Color> colors;
 
     public Products(Long id, String distributor, double price) {
         this.id = id;
@@ -39,10 +37,6 @@ public class Products {
         this.id = id;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     public String getDistributor() {
         return Distributor;
     }
@@ -59,12 +53,4 @@ public class Products {
         this.price = price;
     }
 
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
 }

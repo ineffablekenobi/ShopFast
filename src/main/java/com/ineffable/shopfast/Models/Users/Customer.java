@@ -15,9 +15,6 @@ public class Customer extends User{
     protected String address;
     protected String phoneNumber;
 
-    @OneToMany(targetEntity = Products.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="Customer_fk", referencedColumnName = "id")
-    List<Products> products;
 
     public Customer(Long id, String username, String password, String email, String address, String phoneNumber) {
         super(id, username, password, email);

@@ -7,10 +7,12 @@ import java.util.List;
 public class TeeShirt extends Clothing {
     private String sleeve;
     private String neck;
+/*
 
     @OneToMany(targetEntity =Color.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "TeeShirt_fk",referencedColumnName = "product_id")
     List<Color> colors;
+*/
 
 
 

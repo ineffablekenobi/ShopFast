@@ -1,8 +1,7 @@
-package com.ineffable.shopfast.Services;
+package com.ineffable.shopfast.Services.UserService;
 
 import com.ineffable.shopfast.Models.Users.Customer;
-import com.ineffable.shopfast.Models.Users.User;
-import com.ineffable.shopfast.Repository.CustomerRepo;
+import com.ineffable.shopfast.Repository.UserRepo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +52,6 @@ public class CustomerService {
             customerRepo.save(cst);
         }
     }
+
 
 }
