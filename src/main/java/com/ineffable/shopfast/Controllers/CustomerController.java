@@ -4,12 +4,10 @@ import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.User;
 import com.ineffable.shopfast.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CustomerController {
@@ -25,6 +23,14 @@ public class CustomerController {
     @GetMapping("/getCustomer")
     public List<Customer> getAllUser(){
         return customerService.getAllCustomers();
+    }
+
+
+    @GetMapping("/getCustomer/{id}")
+    public Customer getCustomer(@PathVariable("id") Long id){
+
+        Optional<Customer> customer = customerService.getCustomer(id);
+        return customer.orElseGet(() -> new Customer("Unknown User"));
     }
 
 }

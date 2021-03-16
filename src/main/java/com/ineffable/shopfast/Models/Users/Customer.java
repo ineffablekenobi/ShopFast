@@ -25,6 +25,9 @@ public class Customer extends User{
         this.phoneNumber = phoneNumber;
     }
 
+    public Customer(String name){
+        this.username = name;
+    }
 
     public Customer(Long id, String username, String password, String email) {
         super(id, username, password, email);
