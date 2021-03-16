@@ -34,4 +34,24 @@ public class CustomerService {
         Optional<Customer> customer = customerRepo.findById(id);
         return customer;
     }
+
+
+    public boolean getStatus(Long id) {
+        Optional<Customer> customer = customerRepo.findById(id);
+        if(customer.isPresent()){
+            return customer.get().isActive();
+        }else{
+            return false;
+        }
+    }
+
+    public void setStatus(Long id) {
+        Optional<Customer> customer = customerRepo.findById(id);
+        if(customer.isPresent()){
+            Customer cst = customer.get();
+            cst.setActive(!cst.isActive());
+            customerRepo.save(cst);
+        }
+    }
+
 }

@@ -33,4 +33,14 @@ public class CustomerController {
         return customer.orElseGet(() -> new Customer("Unknown User"));
     }
 
+    @GetMapping("/Customer/status/{id}")
+    public boolean getStatus(@PathVariable("id") Long id){
+        return customerService.getStatus(id);
+    }
+
+    @PutMapping("/Customer/status/{id}")
+    public void setStatus(@PathVariable("id") Long id){
+        customerService.setStatus(id);
+    }
+
 }

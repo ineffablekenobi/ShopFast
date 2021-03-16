@@ -10,6 +10,7 @@ public class User {
     protected String username;
     protected String password;
     protected String email;
+    protected boolean active;
 
 
 
@@ -61,6 +62,13 @@ public class User {
         this.email = email;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
 
 
