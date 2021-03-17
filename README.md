@@ -10,4 +10,8 @@ AND ALSO ID FOR PRODUCT WAS NAMED product_id
 
 Never use a foriegn key in Contrustor/Getter/Setter
 
-The table works. Adding Controllers and Service and Repos now Priority. Adding and Working Login and Role assignments can also be achieved.
+User Login added \
+Customer login added \
+Shop Login added \
+Your shop needs to work with stuffs and Products. Try to
+implement them

@@ -1,6 +1,4 @@
 package com.ineffable.shopfast.Controllers.ShopController;
-
-import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.Stuff;
 import com.ineffable.shopfast.Services.ShopService.StuffService;
 import org.springframework.beans.factory.annotation.Autowired;
