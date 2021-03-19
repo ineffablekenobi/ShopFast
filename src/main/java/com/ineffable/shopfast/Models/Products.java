@@ -12,12 +12,20 @@ public class Products {
     @GeneratedValue
     @Column(name = "product_id")
     protected Long id;
+
     private String Distributor;
+    private Long quantity;
     private double price;
 
     @OneToMany(targetEntity = Color.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Customer_fk",referencedColumnName = "product_id")
     List<Color> colors;
+
+    public Products(String distributor, Long quantity, double price) {
+        Distributor = distributor;
+        this.quantity = quantity;
+        this.price = price;
+    }
 
     public Products(Long id, String distributor, double price) {
         this.id = id;
@@ -52,4 +60,11 @@ public class Products {
         this.price = price;
     }
 
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
 }

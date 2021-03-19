@@ -12,10 +12,12 @@ public class Shop {
     @Id
     @GeneratedValue
     protected Long id;
+
     private String name;
     private String address;
     private String phoneNumber;
     private String tradeLicenseNo;
+
 
     //can have many Stuff one to Many
     @OneToMany(targetEntity = Stuff.class, cascade = CascadeType.ALL)

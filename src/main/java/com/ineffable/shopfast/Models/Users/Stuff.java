@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 @Entity
 public class Stuff extends User {
 
+
     private String phoneNumber;
+    //not part of login
     private String role;
 
     public Stuff(Long id, String username, String password, String email, String phoneNumber, String role) {

@@ -7,9 +7,11 @@ public class User {
     @Id
     @GeneratedValue
     protected Long id;
+
     protected String username;
     protected String password;
     protected String email;
+    //not used for login
     protected boolean active;
 
 
