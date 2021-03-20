@@ -7,14 +7,12 @@ import java.util.List;
 public class TeeShirt extends Clothing {
     private String sleeve;
     private String neck;
-/*
 
+/*
     @OneToMany(targetEntity =Color.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "TeeShirt_fk",referencedColumnName = "product_id")
     List<Color> colors;
 */
-
-
 
     public TeeShirt(Long id, String distributor, double price, double cotton, double polyester, double CBC, String fabricType, Boolean slimfit, String sleeve, String neck) {
         super(id, distributor, price, cotton, polyester, CBC, fabricType, slimfit);

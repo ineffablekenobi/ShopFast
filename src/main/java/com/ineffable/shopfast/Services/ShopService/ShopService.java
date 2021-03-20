@@ -14,8 +14,8 @@ public class ShopService {
     @Autowired
     private ShopRepo shopRepo;
 
-    public void createShop(Shop shop) {
-        shopRepo.save(shop);
+    public Long createShop(Shop shop) {
+        return shopRepo.save(shop).getId();
     }
 
     public List<Shop> getAllShop() {

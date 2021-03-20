@@ -19,7 +19,7 @@ public class StuffService {
         return list;
     }
 
-    public void createStuff(Stuff stuff) {
-        stuffRepo.save(stuff);
+    public Long createStuff(Stuff stuff) {
+        return stuffRepo.save(stuff).getId();
     }
 }

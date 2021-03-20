@@ -11,6 +11,7 @@ import java.util.List;
 public class Shop {
     @Id
     @GeneratedValue
+    //this is not an attribute
     protected Long id;
 
     private String name;

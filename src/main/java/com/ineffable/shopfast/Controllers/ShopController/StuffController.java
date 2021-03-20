@@ -17,8 +17,8 @@ public class StuffController{
 
     // call this to create a new Stuff
     @PostMapping("/createStuff")
-    public void createStuff(@RequestBody Stuff stuff){
-        stuffService.createStuff(stuff);
+    public Long createStuff(@RequestBody Stuff stuff){
+        return stuffService.createStuff(stuff);
     }
 
 

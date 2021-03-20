@@ -24,8 +24,8 @@ public class CustomerService {
         return list;
     }
 
-    public void createCustomer(Customer customer) {
-        customerRepo.save(customer);
+    public Long createCustomer(Customer customer) {
+        return customerRepo.save(customer).getId();
     }
 
 

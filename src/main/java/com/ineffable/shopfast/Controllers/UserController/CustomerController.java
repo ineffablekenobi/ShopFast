@@ -16,8 +16,8 @@ public class CustomerController {
 
     // use this to create any new customer
     @PostMapping("/createCustomer")
-    public void createCustomer(@RequestBody Customer customer){
-        customerService.createCustomer(customer);
+    public Long createCustomer(@RequestBody Customer customer){
+        return customerService.createCustomer(customer);
     }
 
     // use this to get a list of all available customer

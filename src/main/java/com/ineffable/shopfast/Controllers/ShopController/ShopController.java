@@ -14,8 +14,8 @@ public class ShopController {
 
     // use this to create a new shop
     @PostMapping("/createShop")
-    public void createCustomer(@RequestBody Shop shop){
-        shopService.createShop(shop);
+    public Long createCustomer(@RequestBody Shop shop){
+        return shopService.createShop(shop);
     }
 
     // use this to get all available shop
