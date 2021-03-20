@@ -11,12 +11,14 @@ public class Products {
     @Id
     @GeneratedValue
     @Column(name = "product_id")
+    //this is not an attribute
     protected Long id;
 
     private String Distributor;
     private Long quantity;
     private double price;
 
+    //this is not an attribute
     @OneToMany(targetEntity = Color.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Customer_fk",referencedColumnName = "product_id")
     List<Color> colors;

@@ -19,11 +19,13 @@ public class Shop {
     private String tradeLicenseNo;
 
 
+    //this is not an attribute
     //can have many Stuff one to Many
     @OneToMany(targetEntity = Stuff.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")
     List<Stuff> stuffList;
 
+    //this is not an attribute
     //can have many Products
     @OneToMany(targetEntity = Stuff.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")

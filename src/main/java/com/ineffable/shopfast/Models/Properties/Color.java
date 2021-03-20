@@ -8,7 +8,9 @@ import javax.persistence.Id;
 public class Color {
     @Id
     @GeneratedValue
+    //this is not an attribute
     private Long id;
+
     private String hex;
     private String name;
     private String rgba;

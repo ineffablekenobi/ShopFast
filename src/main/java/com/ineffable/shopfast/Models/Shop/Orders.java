@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //this is not an attribute
     protected Long id;
 
     private String customerName;

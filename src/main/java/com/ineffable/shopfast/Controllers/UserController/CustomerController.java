@@ -20,7 +20,7 @@ public class CustomerController {
         customerService.createCustomer(customer);
     }
 
-    // use this to get a list of all availaable customer
+    // use this to get a list of all available customer
     @GetMapping("/getCustomer")
     public List<Customer> getAllUser(){
         return customerService.getAllCustomers();
