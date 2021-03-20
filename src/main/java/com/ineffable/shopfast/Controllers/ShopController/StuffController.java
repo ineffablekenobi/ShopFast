@@ -15,12 +15,14 @@ public class StuffController{
     @Autowired
     private StuffService stuffService;
 
+    // call this to create a new Stuff
     @PostMapping("/createStuff")
     public void createStuff(@RequestBody Stuff stuff){
         stuffService.createStuff(stuff);
     }
 
 
+    // call this to get all available stuffs
     @GetMapping("/getStuff")
     public List<Stuff> getAllStuff(){
         return stuffService.getAllStuff();

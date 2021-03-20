@@ -14,11 +14,13 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    // use this to create any new customer
     @PostMapping("/createCustomer")
     public void createCustomer(@RequestBody Customer customer){
         customerService.createCustomer(customer);
     }
 
+    // use this to get a list of all availaable customer
     @GetMapping("/getCustomer")
     public List<Customer> getAllUser(){
         return customerService.getAllCustomers();

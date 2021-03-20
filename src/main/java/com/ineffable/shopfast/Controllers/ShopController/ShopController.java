@@ -12,16 +12,19 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
+    // use this to create a new shop
     @PostMapping("/createShop")
     public void createCustomer(@RequestBody Shop shop){
         shopService.createShop(shop);
     }
 
+    // use this to get all available shop
     @GetMapping("/getShop")
     public List<Shop> getAllShop(){
         return shopService.getAllShop();
     }
 
+    //use this to get any shop by their id
     @GetMapping("/getShop/{id}")
     public Shop getShop(@PathVariable("id") Long id){
         return shopService.findById(id);

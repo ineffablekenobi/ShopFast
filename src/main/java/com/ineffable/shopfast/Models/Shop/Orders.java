@@ -7,6 +7,7 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
+
     private String customerName;
     private Long customerId;
     private String customerPhoneNumber;
@@ -15,6 +16,7 @@ public class Orders {
     private String orderDate;
     private String orderTime;
     private Long orderQuantity;
+
 
     public Orders(String customerName, Long customerId, String customerPhoneNumber, String productDistributor, Long productId, String orderDate, String orderTime, Long orderQuantity) {
         this.customerName = customerName;
