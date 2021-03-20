@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Models;
+package com.ineffable.shopfast.Models.Products;
 
 import com.ineffable.shopfast.Models.Properties.Color;
 
@@ -18,10 +18,12 @@ public class Products {
     private Long quantity;
     private double price;
 
+    /*
     //this is not an attribute
     @OneToMany(targetEntity = Color.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Customer_fk",referencedColumnName = "product_id")
+    @JoinColumn(name = "Colors_fk",referencedColumnName = "product_id")
     List<Color> colors;
+    */
 
     public Products(String distributor, Long quantity, double price) {
         Distributor = distributor;

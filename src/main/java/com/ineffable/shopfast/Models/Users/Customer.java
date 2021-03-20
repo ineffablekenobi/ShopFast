@@ -1,12 +1,6 @@
 package com.ineffable.shopfast.Models.Users;
 
-import com.ineffable.shopfast.Models.Products;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 @Entity
 public class Customer extends User{

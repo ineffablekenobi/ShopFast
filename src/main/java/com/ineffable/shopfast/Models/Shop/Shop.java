@@ -1,6 +1,6 @@
 package com.ineffable.shopfast.Models.Shop;
 
-import com.ineffable.shopfast.Models.Products;
+import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Users.Stuff;
 
 import javax.persistence.*;

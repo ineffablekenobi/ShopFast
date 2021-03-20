@@ -1,4 +1,4 @@
-package com.ineffable.shopfast.Models;
+package com.ineffable.shopfast.Models.Products;
 
 import javax.persistence.*;
 

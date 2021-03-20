@@ -1,7 +1,6 @@
-package com.ineffable.shopfast.Models;
+package com.ineffable.shopfast.Models.Products;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class TeeShirt extends Clothing {

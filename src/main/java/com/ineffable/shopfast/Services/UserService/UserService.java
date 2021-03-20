@@ -1,13 +1,11 @@
 package com.ineffable.shopfast.Services.UserService;
 
-import com.ineffable.shopfast.Models.Products;
 import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.Stuff;
 import com.ineffable.shopfast.Models.Users.User;
 import com.ineffable.shopfast.Repository.ShopRepo.StuffRepo;
 import com.ineffable.shopfast.Repository.UserRepo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.codec.CodecCustomizer;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

@@ -14,4 +14,5 @@ User Login added \
 Customer login added \
 Shop Login added \
 Your shop needs to work with stuffs and Products. Try to
-implement them
+implement them \
+instance of is a way to check the type of upcasted class 
