@@ -1,6 +1,6 @@
 package com.ineffable.shopfast.Services.ShopService;
 
-import com.ineffable.shopfast.Models.Users.Stuff;
+import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Repository.ShopRepo.StuffRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,13 @@ public class StuffService {
     @Autowired
     private StuffRepo stuffRepo;
 
-    public List<Stuff> getAllStuff() {
-        List<Stuff> list = new ArrayList<>();
+    public List<Staff> getAllStuff() {
+        List<Staff> list = new ArrayList<>();
         stuffRepo.findAll().forEach(list::add);
         return list;
     }
 
-    public Long createStuff(Stuff stuff) {
-        return stuffRepo.save(stuff).getId();
+    public Long createStuff(Staff staff) {
+        return stuffRepo.save(staff).getId();
     }
 }

@@ -1,5 +1,5 @@
 package com.ineffable.shopfast.Controllers.ShopController;
-import com.ineffable.shopfast.Models.Users.Stuff;
+import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Services.ShopService.StuffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +17,14 @@ public class StuffController{
 
     // call this to create a new Stuff
     @PostMapping("/createStuff")
-    public Long createStuff(@RequestBody Stuff stuff){
-        return stuffService.createStuff(stuff);
+    public Long createStuff(@RequestBody Staff staff){
+        return stuffService.createStuff(staff);
     }
 
 
     // call this to get all available stuffs
     @GetMapping("/getStuff")
-    public List<Stuff> getAllStuff(){
+    public List<Staff> getAllStuff(){
         return stuffService.getAllStuff();
     }
 
