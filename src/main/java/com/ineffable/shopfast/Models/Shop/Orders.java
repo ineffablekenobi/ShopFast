@@ -9,54 +9,28 @@ public class Orders {
     //this is not an attribute
     protected Long id;
 
-    private String customerName;
-    private Long customerId;
-    private String customerPhoneNumber;
     private String productDistributor;
     private Long productId;
-    private String orderDate;
-    private String orderTime;
     private Long orderQuantity;
 
 
-    public Orders(String customerName, Long customerId, String customerPhoneNumber, String productDistributor, Long productId, String orderDate, String orderTime, Long orderQuantity) {
-        this.customerName = customerName;
-        this.customerId = customerId;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.productDistributor = productDistributor;
-        this.productId = productId;
-        this.orderDate = orderDate;
-        this.orderTime = orderTime;
-        this.orderQuantity = orderQuantity;
-    }
 
     public Orders() {
     }
 
 
-
-    public String getCustomerName() {
-        return customerName;
+    public Orders(String productDistributor, Long productId, Long orderQuantity) {
+        this.productDistributor = productDistributor;
+        this.productId = productId;
+        this.orderQuantity = orderQuantity;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public Long getId() {
+        return id;
     }
 
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getCustomerPhoneNumber() {
-        return customerPhoneNumber;
-    }
-
-    public void setCustomerPhoneNumber(String customerPhoneNumber) {
-        this.customerPhoneNumber = customerPhoneNumber;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProductDistributor() {
@@ -73,22 +47,6 @@ public class Orders {
 
     public void setProductId(Long productId) {
         this.productId = productId;
-    }
-
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(String orderTime) {
-        this.orderTime = orderTime;
     }
 
     public Long getOrderQuantity() {

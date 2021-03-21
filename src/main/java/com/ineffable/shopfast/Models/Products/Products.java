@@ -17,6 +17,9 @@ public class Products {
     private String Distributor;
     private Long quantity;
     private double price;
+    private String Description;
+    private String imageData;
+
 
     /*
     //this is not an attribute
@@ -70,5 +73,21 @@ public class Products {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
     }
 }
