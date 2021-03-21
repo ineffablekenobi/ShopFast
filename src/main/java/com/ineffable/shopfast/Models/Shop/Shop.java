@@ -28,7 +28,7 @@ public class Shop {
 
     //this is not an attribute
     //can have many Products
-    @OneToMany(targetEntity = Staff.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Products.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")
     List<Products> products;
 

@@ -14,10 +14,13 @@ public class Products {
     //this is not an attribute
     protected Long id;
 
+    private String productName;
     private String Distributor;
     private Long quantity;
     private double price;
     private String Description;
+
+    //not added to create product
     private String imageData;
 
 
@@ -27,6 +30,15 @@ public class Products {
     @JoinColumn(name = "Colors_fk",referencedColumnName = "product_id")
     List<Color> colors;
     */
+
+    public Products(String productName, String distributor, Long quantity, double price, String description, String imageData) {
+        this.productName = productName;
+        Distributor = distributor;
+        this.quantity = quantity;
+        this.price = price;
+        Description = description;
+        this.imageData = imageData;
+    }
 
     public Products(String distributor, Long quantity, double price) {
         Distributor = distributor;
@@ -43,8 +55,8 @@ public class Products {
     public Products() {
     }
 
-    public Products(String Distributor) {
-        this.Distributor = Distributor;
+    public Products(String productName) {
+        this.productName = productName;
     }
 
     public Long getId() {
@@ -93,5 +105,13 @@ public class Products {
 
     public void setImageData(String imageData) {
         this.imageData = imageData;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
