@@ -43,6 +43,10 @@ public class Products {
     public Products() {
     }
 
+    public Products(String Distributor) {
+        this.Distributor = Distributor;
+    }
+
     public Long getId() {
         return id;
     }

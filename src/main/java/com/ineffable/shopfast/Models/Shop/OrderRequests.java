@@ -14,7 +14,6 @@ public class OrderRequests {
     private String orderDate;
     private String orderTime;
 
-    @ManyToOne(targetEntity = Or)
 
     @OneToMany(targetEntity = Orders.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "OrderRequest_fk", referencedColumnName = "id")

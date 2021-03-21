@@ -15,4 +15,7 @@ Customer login added \
 Shop Login added \
 Your shop needs to work with stuffs and Products. Try to
 implement them \
-instance of is a way to check the type of upcasted class 
+instance of is a way to check the type of upcasted class \
+When you add a new type of product remember to update the controller
+methods implementation in your product service. The upcasted methods
+needs additional implementation
