@@ -3,6 +3,7 @@ package com.ineffable.shopfast.Controllers.ProductController;
 import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Products.TeeShirt;
 import com.ineffable.shopfast.Services.ProductService.ProductService;
+import com.ineffable.shopfast.Services.ProductService.TeeShirtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,16 +22,10 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    //find all products
-    @GetMapping("/findProduct")
-    public List<Products> getProducts(){
-        return productService.getProducts();
-    }
 
     //find all teeShirts
-    @GetMapping("/findTeeShirts")
+    @GetMapping("/getTeeShirt")
     public List<TeeShirt> getTeeShirts(){
         return productService.getALLTeeShirts();
     }
-
 }

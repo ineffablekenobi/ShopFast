@@ -23,16 +23,9 @@ public class ProductService {
         return new Products("Unknown Product");
     }
 
-    public List<Products> getProducts() {
-        List<Products> list = new ArrayList<>();
-        teeShirtRepo.findAll().forEach(list::add);
-        return list;
-    }
-
     public List<TeeShirt> getALLTeeShirts() {
         List<TeeShirt> list = new ArrayList<>();
         teeShirtRepo.findAll().forEach(list::add);
         return list;
     }
-
 }
