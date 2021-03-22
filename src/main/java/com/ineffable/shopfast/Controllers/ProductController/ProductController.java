@@ -28,4 +28,10 @@ public class ProductController {
     public List<TeeShirt> getTeeShirts(){
         return productService.getALLTeeShirts();
     }
+
+    @GetMapping("/deleteProductById/{id}")
+    public void deleteProductById(@PathVariable("id") Long id){
+        productService.deleteProductById(id);
+    }
+
 }

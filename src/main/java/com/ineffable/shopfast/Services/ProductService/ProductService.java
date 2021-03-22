@@ -28,4 +28,10 @@ public class ProductService {
         teeShirtRepo.findAll().forEach(list::add);
         return list;
     }
+
+    public void deleteProductById(Long id) {
+        if(teeShirtRepo.existsById(id)){
+            teeShirtRepo.deleteById(id);
+        }
+    }
 }
