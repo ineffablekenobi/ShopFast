@@ -3,7 +3,7 @@ package com.ineffable.shopfast.Services.UserService;
 import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Models.Users.User;
-import com.ineffable.shopfast.Repository.ShopRepo.StuffRepo;
+import com.ineffable.shopfast.Repository.ShopRepo.StaffRepo;
 import com.ineffable.shopfast.Repository.UserRepo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,11 @@ public class UserService {
     private CustomerRepo customerRepo;
 
     @Autowired
-    private StuffRepo stuffRepo;
+    private StaffRepo staffRepo;
 
     public User getUserByUsername(String name) {
         Optional<Customer> customer = customerRepo.findByUsername(name);
-        Optional<Staff> stuff = stuffRepo.findByUsername(name);
+        Optional<Staff> stuff = staffRepo.findByUsername(name);
         if(customer.isPresent()){
             return customer.get();
         }else if(stuff.isPresent()){
@@ -32,7 +32,7 @@ public class UserService {
 
     public User gerUserByEmail(String email){
         Optional<Customer> customer = customerRepo.findByEmail(email);
-        Optional<Staff> stuff = stuffRepo.findByEmail(email);
+        Optional<Staff> stuff = staffRepo.findByEmail(email);
         if(customer.isPresent()){
             return customer.get();
         }else if(stuff.isPresent()){
@@ -44,7 +44,7 @@ public class UserService {
 
     public User getUserByID(Long id) {
         Optional<Customer> customer = customerRepo.findById(id);
-        Optional<Staff> stuff = stuffRepo.findById(id);
+        Optional<Staff> stuff = staffRepo.findById(id);
         if(customer.isPresent()){
             return customer.get();
         }else if(stuff.isPresent()){
@@ -56,7 +56,7 @@ public class UserService {
 
     public boolean getStatus(Long id) {
         Optional<Customer> customer = customerRepo.findById(id);
-        Optional<Staff> stuff = stuffRepo.findById(id);
+        Optional<Staff> stuff = staffRepo.findById(id);
         if(customer.isPresent()){
             return customer.get().isActive();
         }else if(stuff.isPresent()){
@@ -68,7 +68,7 @@ public class UserService {
 
     public void setStatus(Long id) {
         Optional<Customer> customer = customerRepo.findById(id);
-        Optional<Staff> stuff = stuffRepo.findById(id);
+        Optional<Staff> stuff = staffRepo.findById(id);
         if(customer.isPresent()){
             Customer cst = customer.get();
             cst.setActive(!cst.isActive());
@@ -76,7 +76,7 @@ public class UserService {
         }else if(stuff.isPresent()){
             Staff stf = stuff.get();
             stf.setActive(!stf.isActive());
-            stuffRepo.save(stf);
+            staffRepo.save(stf);
         }
     }
 

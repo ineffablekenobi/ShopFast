@@ -24,13 +24,13 @@ public class Shop {
     //can have many Stuff one to Many
     @OneToMany(targetEntity = Staff.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")
-    List<Staff> staffList;
+    public List<Staff> staffList;
 
     //this is not an attribute
     //can have many Products
     @OneToMany(targetEntity = Products.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")
-    List<Products> products;
+    public List<Products> products;
 
 
     public Shop(Long id, String name, String address, String phoneNumber, String tradeLicenseNo) {

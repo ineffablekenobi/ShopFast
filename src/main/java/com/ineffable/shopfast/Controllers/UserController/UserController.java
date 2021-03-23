@@ -46,5 +46,4 @@ public class UserController {
         userService.setStatus(id);
     }
 
-
 }

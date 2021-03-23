@@ -1,5 +1,7 @@
 package com.ineffable.shopfast.Models.Shop;
 
+import com.ineffable.shopfast.Models.Products.Products;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,8 @@ public class Orders {
     private Long productId;
     private Long orderQuantity;
 
+    @OneToOne(targetEntity = Products.class, cascade = CascadeType.ALL)
+    public Products products;
 
 
     public Orders() {
