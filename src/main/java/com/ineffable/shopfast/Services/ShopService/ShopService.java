@@ -45,4 +45,14 @@ public class ShopService {
     public List<Staff> getStaffs(Long id) {
         return shopRepo.findById(id).get().staffList;
     }
+
+    public Staff removeStaff(Long staffid, Long shopid) {
+        Staff staff = staffRepo.findById(staffid).get();
+        Shop shop = shopRepo.findById(shopid).get();
+        List<Staff> staffList = shop.staffList;
+        staffList.remove(staff);
+        staff.setRole("");
+        shopRepo.save(shop);
+        return staff;
+    }
 }

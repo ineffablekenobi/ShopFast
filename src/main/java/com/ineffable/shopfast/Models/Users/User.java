@@ -1,5 +1,7 @@
 package com.ineffable.shopfast.Models.Users;
 
+import com.ineffable.shopfast.Models.Shop.Cart;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,9 @@ public class User {
     //not used for login
     protected boolean active;
 
+    @OneToOne(targetEntity = Cart.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Cart_fk", referencedColumnName = "id")
+    public Cart cart;
 
 
     public User(Long id, String username, String password, String email) {
@@ -21,11 +26,13 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.cart = new Cart();
     }
 
 
 
     public User() {
+        this.cart = new Cart();
     }
 
     public User(String username) {

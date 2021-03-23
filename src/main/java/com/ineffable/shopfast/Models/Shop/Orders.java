@@ -11,20 +11,14 @@ public class Orders {
     //this is not an attribute
     protected Long id;
 
-    private String productDistributor;
     private Long productId;
     private Long orderQuantity;
-
-    @OneToOne(targetEntity = Products.class, cascade = CascadeType.ALL)
-    public Products products;
-
 
     public Orders() {
     }
 
 
-    public Orders(String productDistributor, Long productId, Long orderQuantity) {
-        this.productDistributor = productDistributor;
+    public Orders(Long productId, Long orderQuantity) {
         this.productId = productId;
         this.orderQuantity = orderQuantity;
     }
@@ -35,14 +29,6 @@ public class Orders {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getProductDistributor() {
-        return productDistributor;
-    }
-
-    public void setProductDistributor(String productDistributor) {
-        this.productDistributor = productDistributor;
     }
 
     public Long getProductId() {

@@ -31,14 +31,22 @@ public class ShopController {
         return shopService.findById(id);
     }
 
+    //assign a staff under a shop
     @PutMapping("/assignStaff/{staffid}/{shopid}")
     public Staff assignStaff(@PathVariable("staffid")Long staffid,@PathVariable("shopid")Long shopid){
         return shopService.assignStaff(staffid,shopid);
     }
 
+    //get all staff available to a shop
     @GetMapping("getStaffs/{id}")
     public List<Staff> getStaffs(@PathVariable("id") Long id){
         return shopService.getStaffs(id);
+    }
+
+    //remove staff from a shop
+    @PutMapping("removeStaffs/{staffid}/{shopid}")
+    public Staff removeStaff(@PathVariable("staffid") Long staffid, @PathVariable("shopid") Long shopid){
+        return shopService.removeStaff(staffid,shopid);
     }
 
 }
