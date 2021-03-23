@@ -1,5 +1,6 @@
 package com.ineffable.shopfast.Services;
 
+import com.ineffable.shopfast.Dto.RemoveFromCartRequest;
 import com.ineffable.shopfast.Dto.addToCartRequest;
 import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Shop.Cart;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.Order;
 
 @Service
-public class addToCartService {
+public class CartService {
 
     @Autowired
     private UserService userService;
@@ -70,5 +71,22 @@ public class addToCartService {
         }
 
         return cart;
+    }
+
+
+    public Cart removeFromCart(RemoveFromCartRequest request) {
+        User user = userService.getUserByID(request.getUserId());
+        Cart cart = user.cart;
+        for(int i = 0; i < cart.ordersList.size(); i++){
+            if(cart.ordersList.get(i).getProductId().equals(request.getProductId())){
+                cart.ordersList.remove(i);
+                break;
+            }
+        }
+        return cart;
+    }
+
+    public Cart getCart(Long userid) {
+        return userService.getUserByID(userid).cart;
     }
 }
