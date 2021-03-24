@@ -130,8 +130,10 @@ public class CartService {
         Double value = 0.00;
 
         for(int i = 0; i < cart.ordersList.size(); i++){
+            cart.ordersList.get(i).setConfirmed(true);
             Long orderQuantity = cart.ordersList.get(i).getOrderQuantity();
             Products products = productService.getProductById(cart.ordersList.get(i).getProductId());
+            products.updateSold(orderQuantity);
             value += products.getPrice() * orderQuantity;
         }
 
@@ -176,10 +178,9 @@ public class CartService {
             cart.ordersList.get(i).setConfirmed(true);
             Long orderQuantity = cart.ordersList.get(i).getOrderQuantity();
             Products products = productService.getProductById(cart.ordersList.get(i).getProductId());
+            products.updateSold(orderQuantity);
             value += products.getPrice() * orderQuantity;
         }
-
-
 
         salesReport.setTotalWorth(value);
 

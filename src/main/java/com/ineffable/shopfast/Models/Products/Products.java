@@ -1,6 +1,7 @@
 package com.ineffable.shopfast.Models.Products;
 
 import com.ineffable.shopfast.Models.Properties.Color;
+import com.ineffable.shopfast.Models.Shop.Shop;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,9 +20,13 @@ public class Products {
     private Long quantity;
     private double price;
     private String Description;
+    private Long shopId;
 
     //not added to create product
     private String imageData;
+
+    //not added to frontend
+    private Long soldUnits;
 
 
     /*
@@ -113,5 +118,25 @@ public class Products {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public void  updateSold(Long sold){
+        this.soldUnits += sold;
+    }
+
+    public Long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
+    }
+
+    public Long getSoldUnits() {
+        return soldUnits;
+    }
+
+    public void setSoldUnits(Long soldUnits) {
+        this.soldUnits = soldUnits;
     }
 }

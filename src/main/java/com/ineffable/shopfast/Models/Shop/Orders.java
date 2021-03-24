@@ -15,6 +15,9 @@ public class Orders {
 
     private Long productId;
     private Long orderQuantity;
+
+
+    //this not an attribute for frontend
     private boolean confirmed;
 
     private final Date orderDate = new Date(System.currentTimeMillis());
