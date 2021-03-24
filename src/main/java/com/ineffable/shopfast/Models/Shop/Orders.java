@@ -1,8 +1,9 @@
 package com.ineffable.shopfast.Models.Shop;
 
-import com.ineffable.shopfast.Models.Products.Products;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Orders {
@@ -13,6 +14,7 @@ public class Orders {
 
     private Long productId;
     private Long orderQuantity;
+    private boolean confirmed;
 
     public Orders() {
     }
@@ -21,6 +23,7 @@ public class Orders {
     public Orders(Long productId, Long orderQuantity) {
         this.productId = productId;
         this.orderQuantity = orderQuantity;
+        this.confirmed = false;
     }
 
     public Long getId() {
@@ -45,5 +48,13 @@ public class Orders {
 
     public void setOrderQuantity(Long orderQuantity) {
         this.orderQuantity = orderQuantity;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 }
