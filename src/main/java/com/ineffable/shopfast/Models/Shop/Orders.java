@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Orders {
@@ -15,6 +16,8 @@ public class Orders {
     private Long productId;
     private Long orderQuantity;
     private boolean confirmed;
+
+    private final Date orderDate = new Date(System.currentTimeMillis());
 
     public Orders() {
     }

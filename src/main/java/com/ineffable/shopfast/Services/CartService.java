@@ -115,7 +115,10 @@ public class CartService {
         User user = userService.getUserByID(request.getCustomerId());
         Cart cart = user.cart;
 
+        invoice.ordersList = new ArrayList<>();
         invoice.ordersList.addAll(cart.ordersList);
+
+        invoiceRepo.save(invoice);
 
         //generate sales report
         SalesReport salesReport = new SalesReport();
@@ -133,6 +136,12 @@ public class CartService {
         }
 
         salesReport.setTotalWorth(value);
+        salesRepo.save(salesReport);
+
+        cart.ordersList.clear();
+        user.cart = cart;
+
+        customerRepo.save((Customer) user);
 
         return invoice;
     }
@@ -175,6 +184,12 @@ public class CartService {
         salesReport.setTotalWorth(value);
 
         salesRepo.save(salesReport);
+
+        cart.ordersList.clear();
+
+        user.cart = cart;
+
+        staffRepo.save((Staff) user);
 
         return invoice;
     }
