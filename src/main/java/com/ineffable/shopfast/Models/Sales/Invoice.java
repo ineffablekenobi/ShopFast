@@ -18,6 +18,7 @@ public class Invoice {
     private String addreess;
     private String phonenumber;
     private String paymentMethod;
+    private boolean invoiceForDB;
 
     @ManyToMany
     public List<Orders> ordersList;
@@ -71,5 +72,13 @@ public class Invoice {
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public boolean isInvoiceForDB() {
+        return invoiceForDB;
+    }
+
+    public void setInvoiceForDB(boolean invoiceForDB) {
+        this.invoiceForDB = invoiceForDB;
     }
 }

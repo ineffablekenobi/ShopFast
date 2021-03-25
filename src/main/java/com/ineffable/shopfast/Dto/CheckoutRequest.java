@@ -1,7 +1,5 @@
 package com.ineffable.shopfast.Dto;
 
-import com.ineffable.shopfast.Models.Sales.SalesReport;
-
 public abstract class CheckoutRequest {
     protected String name;
     protected String phoneNumber;

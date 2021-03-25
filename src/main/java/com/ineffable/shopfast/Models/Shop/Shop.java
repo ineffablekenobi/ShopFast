@@ -1,7 +1,7 @@
 package com.ineffable.shopfast.Models.Shop;
 
 import com.ineffable.shopfast.Models.Products.Products;
-import com.ineffable.shopfast.Models.Sales.SalesReport;
+import com.ineffable.shopfast.Models.Sales.Invoice;
 import com.ineffable.shopfast.Models.Users.Staff;
 
 import javax.persistence.*;
@@ -20,9 +20,9 @@ public class Shop {
     private String phoneNumber;
     private String tradeLicenseNo;
 
-    @OneToMany(targetEntity = SalesReport.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Invoice.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "Shop_fk",referencedColumnName = "id")
-    public List<SalesReport> salesReports;
+    public List<Invoice> invoiceList;
 
     //this is not an attribute
     //can have many Stuff one to Many

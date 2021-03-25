@@ -6,31 +6,31 @@ import com.ineffable.shopfast.Dto.RemoveFromCartRequest;
 import com.ineffable.shopfast.Dto.addToCartRequest;
 import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Sales.Invoice;
-import com.ineffable.shopfast.Models.Sales.SalesReport;
 import com.ineffable.shopfast.Models.Shop.Cart;
 import com.ineffable.shopfast.Models.Shop.Orders;
+import com.ineffable.shopfast.Models.Shop.Shop;
 import com.ineffable.shopfast.Models.Users.Customer;
 import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Models.Users.User;
 import com.ineffable.shopfast.Repository.SalesRepo.InvoiceRepo;
-import com.ineffable.shopfast.Repository.SalesRepo.SalesRepo;
 import com.ineffable.shopfast.Repository.ShopRepo.OrderRepo;
+import com.ineffable.shopfast.Repository.ShopRepo.ShopRepo;
 import com.ineffable.shopfast.Repository.ShopRepo.StaffRepo;
 import com.ineffable.shopfast.Repository.UserRepo.CustomerRepo;
 import com.ineffable.shopfast.Services.ProductService.ProductService;
-import com.ineffable.shopfast.Services.UserService.CustomerService;
 import com.ineffable.shopfast.Services.UserService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.Order;
-import java.util.ArrayList;
+import java.util.*;
 
 @Service
 public class CartService {
 
     @Autowired
     private UserService userService;
+
+
 
     @Autowired
     private ProductService productService;
@@ -48,7 +48,8 @@ public class CartService {
     private InvoiceRepo invoiceRepo;
 
     @Autowired
-    private SalesRepo salesRepo;
+    private ShopRepo shopRepo;
+
 
     public Cart addToCart(addToCartRequest request) {
         User user = userService.getUserByID(request.getUserId());
@@ -96,6 +97,12 @@ public class CartService {
                 break;
             }
         }
+        if(user instanceof Customer){
+            customerRepo.save((Customer) user);
+        }else if(user instanceof Staff){
+            staffRepo.save((Staff) user);
+        }
+
         return cart;
     }
 
@@ -120,30 +127,53 @@ public class CartService {
 
         invoiceRepo.save(invoice);
 
-        //generate sales report
-        SalesReport salesReport = new SalesReport();
-        salesReport.invoice = invoice;
-        salesReport.user = user;
-
-        salesReport.setUserType("Customer");
-
-        Double value = 0.00;
+        Map<Long, Invoice> invoices = new HashMap<>();
 
         for(int i = 0; i < cart.ordersList.size(); i++){
             cart.ordersList.get(i).setConfirmed(true);
             Long orderQuantity = cart.ordersList.get(i).getOrderQuantity();
             Products products = productService.getProductById(cart.ordersList.get(i).getProductId());
             products.updateSold(orderQuantity);
-            value += products.getPrice() * orderQuantity;
+            if(orderQuantity > products.getQuantity()){
+                orderQuantity = products.getQuantity();
+                cart.ordersList.get(i).setOrderQuantity(orderQuantity);
+            }
+            products.setQuantity(products.getQuantity() - orderQuantity);
+            if(invoices.containsKey(products.getShopId())){
+                invoices.get(products.getShopId()).setAddreess(request.getCity() +" "+request.getDistrict());
+                invoices.get(products.getShopId()).setName(request.getName());
+                invoices.get(products.getShopId()).setPaymentMethod(request.getPaymentMethod());
+                invoices.get(products.getShopId()).setPhonenumber(request.getPhoneNumber());
+                invoices.get(products.getShopId()).ordersList = new ArrayList<>();
+                invoices.get(products.getShopId()).ordersList.add(cart.ordersList.get(i));
+            }else{
+                invoices.put(products.getShopId(), new Invoice());
+                invoices.get(products.getShopId()).setAddreess(request.getCity() +" "+request.getDistrict());
+                invoices.get(products.getShopId()).setName(request.getName());
+                invoices.get(products.getShopId()).setPaymentMethod(request.getPaymentMethod());
+                invoices.get(products.getShopId()).setPhonenumber(request.getPhoneNumber());
+                invoices.get(products.getShopId()).ordersList = new ArrayList<>();
+                invoices.get(products.getShopId()).ordersList.add(cart.ordersList.get(i));
+            }
+
         }
 
-        salesReport.setTotalWorth(value);
-        salesRepo.save(salesReport);
+        Iterator<Long> itr = invoices.keySet().iterator();
+
+        while (itr.hasNext()){
+            Long shopID = itr.next();
+            Shop shop = shopRepo.findById(shopID).get();
+            shop.invoiceList.add(invoices.get(shopID));
+            shopRepo.save(shop);
+            invoiceRepo.save(invoices.get(shopID));
+        }
 
         cart.ordersList.clear();
         user.cart = cart;
 
         customerRepo.save((Customer) user);
+        invoice.setInvoiceForDB(true);
+        invoiceRepo.save(invoice);
 
         return invoice;
     }
@@ -165,13 +195,6 @@ public class CartService {
 
         invoiceRepo.save(invoice);
 
-        //generate sales report
-        SalesReport salesReport = new SalesReport();
-        salesReport.invoice = invoice;
-        salesReport.user = user;
-
-        salesReport.setUserType("Staff");
-
         Double value = 0.00;
 
         for(int i = 0; i < cart.ordersList.size(); i++){
@@ -181,10 +204,6 @@ public class CartService {
             products.updateSold(orderQuantity);
             value += products.getPrice() * orderQuantity;
         }
-
-        salesReport.setTotalWorth(value);
-
-        salesRepo.save(salesReport);
 
         cart.ordersList.clear();
 

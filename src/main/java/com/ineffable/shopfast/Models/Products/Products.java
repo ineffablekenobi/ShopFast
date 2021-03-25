@@ -26,7 +26,7 @@ public class Products {
     private String imageData;
 
     //not added to frontend
-    private Long soldUnits;
+    private long soldUnits;
 
 
     /*
