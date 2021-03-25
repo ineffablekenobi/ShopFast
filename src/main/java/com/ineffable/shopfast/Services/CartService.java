@@ -110,10 +110,11 @@ public class CartService {
         return userService.getUserByID(userid).cart;
     }
 
+
     public Invoice checkOut(CheckoutCustomer request) {
 
         //generate invoice
-        Invoice invoice = new Invoice();
+        Invoice invoice = new Invoice(true);
         invoice.setAddreess(request.getCity() +" "+request.getDistrict());
         invoice.setName(request.getName());
         invoice.setPaymentMethod(request.getPaymentMethod());
@@ -124,8 +125,6 @@ public class CartService {
 
         invoice.ordersList = new ArrayList<>();
         invoice.ordersList.addAll(cart.ordersList);
-
-        invoiceRepo.save(invoice);
 
         Map<Long, Invoice> invoices = new HashMap<>();
 
@@ -165,14 +164,13 @@ public class CartService {
             Shop shop = shopRepo.findById(shopID).get();
             shop.invoiceList.add(invoices.get(shopID));
             shopRepo.save(shop);
-            invoiceRepo.save(invoices.get(shopID));
+            //invoiceRepo.save(invoices.get(shopID));
         }
 
         cart.ordersList.clear();
         user.cart = cart;
 
         customerRepo.save((Customer) user);
-        invoice.setInvoiceForDB(true);
         invoiceRepo.save(invoice);
 
         return invoice;
@@ -193,16 +191,45 @@ public class CartService {
         invoice.ordersList = new ArrayList<>();
         invoice.ordersList.addAll(cart.ordersList);
 
-        invoiceRepo.save(invoice);
-
-        Double value = 0.00;
+        Map<Long, Invoice> invoices = new HashMap<>();
 
         for(int i = 0; i < cart.ordersList.size(); i++){
             cart.ordersList.get(i).setConfirmed(true);
             Long orderQuantity = cart.ordersList.get(i).getOrderQuantity();
             Products products = productService.getProductById(cart.ordersList.get(i).getProductId());
             products.updateSold(orderQuantity);
-            value += products.getPrice() * orderQuantity;
+            if(orderQuantity > products.getQuantity()){
+                orderQuantity = products.getQuantity();
+                cart.ordersList.get(i).setOrderQuantity(orderQuantity);
+            }
+            products.setQuantity(products.getQuantity() - orderQuantity);
+            if(invoices.containsKey(products.getShopId())){
+                invoices.get(products.getShopId()).setAddreess(request.getCity() +" "+request.getDistrict());
+                invoices.get(products.getShopId()).setName(request.getName());
+                invoices.get(products.getShopId()).setPaymentMethod(request.getPaymentMethod());
+                invoices.get(products.getShopId()).setPhonenumber(request.getPhoneNumber());
+                invoices.get(products.getShopId()).ordersList = new ArrayList<>();
+                invoices.get(products.getShopId()).ordersList.add(cart.ordersList.get(i));
+            }else{
+                invoices.put(products.getShopId(), new Invoice());
+                invoices.get(products.getShopId()).setAddreess(request.getCity() +" "+request.getDistrict());
+                invoices.get(products.getShopId()).setName(request.getName());
+                invoices.get(products.getShopId()).setPaymentMethod(request.getPaymentMethod());
+                invoices.get(products.getShopId()).setPhonenumber(request.getPhoneNumber());
+                invoices.get(products.getShopId()).ordersList = new ArrayList<>();
+                invoices.get(products.getShopId()).ordersList.add(cart.ordersList.get(i));
+            }
+
+        }
+
+        Iterator<Long> itr = invoices.keySet().iterator();
+
+        while (itr.hasNext()){
+            Long shopID = itr.next();
+            Shop shop = shopRepo.findById(shopID).get();
+            shop.invoiceList.add(invoices.get(shopID));
+            shopRepo.save(shop);
+            //invoiceRepo.save(invoices.get(shopID));
         }
 
         cart.ordersList.clear();
@@ -210,6 +237,9 @@ public class CartService {
         user.cart = cart;
 
         staffRepo.save((Staff) user);
+
+        invoice.setInvoiceForDB(true);
+        invoiceRepo.save(invoice);
 
         return invoice;
     }

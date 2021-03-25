@@ -31,6 +31,10 @@ public class Invoice {
         this.paymentMethod = paymentMethod;
     }
 
+    public Invoice(boolean invoiceForDB) {
+        this.invoiceForDB = invoiceForDB;
+    }
+
     public Invoice() {
     }
 
