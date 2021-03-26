@@ -17,8 +17,8 @@ public class TeeShirtController {
 
     //use it to create a new product
     @PostMapping("/createTeeShirt")
-    public Long createProduct(@RequestBody TeeShirt teeShirt){
-        return teeShirtService.createProduct(teeShirt);
+    public void createProduct(@RequestBody TeeShirt teeShirt){
+        teeShirtService.createProduct(teeShirt);
     }
 
 }

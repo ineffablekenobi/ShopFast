@@ -1,5 +1,6 @@
 package com.ineffable.shopfast.Controllers.ShopController;
 
+import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Shop.Shop;
 import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Services.ShopService.ShopService;
@@ -29,6 +30,11 @@ public class ShopController {
     @GetMapping("/getShop/{id}")
     public Shop getShop(@PathVariable("id") Long id){
         return shopService.findById(id);
+    }
+
+    @GetMapping("/getProducts/{shopid}")
+    public List<Products> getProducts(@PathVariable("shopid")Long shopid){
+        return shopService.getProducts(shopid);
     }
 
     //assign a staff under a shop

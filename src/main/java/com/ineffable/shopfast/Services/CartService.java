@@ -170,8 +170,11 @@ public class CartService {
         cart.ordersList.clear();
         user.cart = cart;
 
-        customerRepo.save((Customer) user);
-        invoiceRepo.save(invoice);
+        Customer cst = (Customer)user;
+        cst.invoiceList.add(invoice);
+        customerRepo.save(cst);
+
+        //invoiceRepo.save(invoice);
 
         return invoice;
     }

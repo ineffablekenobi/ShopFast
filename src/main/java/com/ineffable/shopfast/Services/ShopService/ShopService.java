@@ -1,5 +1,6 @@
 package com.ineffable.shopfast.Services.ShopService;
 
+import com.ineffable.shopfast.Models.Products.Products;
 import com.ineffable.shopfast.Models.Shop.Shop;
 import com.ineffable.shopfast.Models.Users.Staff;
 import com.ineffable.shopfast.Repository.ShopRepo.ShopRepo;
@@ -54,5 +55,9 @@ public class ShopService {
         staff.setRole("");
         shopRepo.save(shop);
         return staff;
+    }
+
+    public List<Products> getProducts(Long shopid) {
+        return shopRepo.findById(shopid).get().products;
     }
 }
