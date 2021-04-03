@@ -26,7 +26,7 @@ public class UserService {
         }else if(stuff.isPresent()){
             return stuff.get();
         }{
-            return new Customer("Unknown User");
+            return new User("Unknown User");
         }
     }
 
@@ -38,7 +38,7 @@ public class UserService {
         }else if(stuff.isPresent()){
             return stuff.get();
         }{
-            return new Customer("Unknown User");
+            return new User("Unknown User");
         }
     }
 
