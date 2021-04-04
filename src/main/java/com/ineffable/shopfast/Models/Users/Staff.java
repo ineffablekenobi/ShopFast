@@ -9,12 +9,16 @@ public class Staff extends User {
     private String phoneNumber;
     //not part of login
     private String role;
+    private Long shopId;
 
-    public Staff(Long id, String username, String password, String email, String phoneNumber, String role) {
+    public Staff(Long id, String username, String password, String email, String phoneNumber, String role, Long shopId) {
         super(id, username, password, email);
         this.phoneNumber = phoneNumber;
         this.role = role;
+        this.shopId = shopId;
     }
+
+
 
     public Staff(String phoneNumber, String role) {
         this.phoneNumber = phoneNumber;
@@ -48,5 +52,13 @@ public class Staff extends User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
     }
 }

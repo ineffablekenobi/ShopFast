@@ -39,6 +39,7 @@ public class ShopService {
         Staff stf  =  staffRepo.findById(staffid).get();
         Shop shop = shopRepo.findById(shopid).get();
         shop.staffList.add(stf);
+        stf.setShopId(shop.getId());
         shopRepo.save(shop);
         return stf;
     }
