@@ -34,7 +34,6 @@ public class ShopService {
         return shop.orElseGet(() -> new Shop("Unknown Shop"));
     }
 
-
     public Staff assignStaff(Long staffid, Long shopid) {
         Staff stf  =  staffRepo.findById(staffid).get();
         Shop shop = shopRepo.findById(shopid).get();
